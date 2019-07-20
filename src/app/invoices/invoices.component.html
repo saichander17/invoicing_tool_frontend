@@ -1,0 +1,17 @@
+<div class="invoices-container">
+  <ng-sidebar-container>
+    <ng-sidebar #invoiceListSideBar [(opened)]="invoicesListSideBarOptions['open']" [mode]="invoicesListSideBarOptions['mode']">
+      <invoices-list></invoices-list>
+    </ng-sidebar>
+    <div ng-sidebar-content>
+      <!-- <button (click)="toggleInvoicesList()">Toggle sidebar</button> -->
+      <!-- <p>hello asdjkhak jsdhkashdjk ashdjkashdkjash djkashdjkashdj kashdjakshdjkash djkashdjk fhjashdkshk</p> -->
+      <button (click)="openNewInvoicePopup()">Create New Invoice</button>
+      <button>Upload Invoice(s) file</button>
+      <invoice-summary [(invoiceId)]='activeInvoiceId' *ngIf="activeInvoiceId"></invoice-summary>
+      <!-- <popup>Hello!</popup> -->
+      <new-invoice-popup *ngIf="showNewInvoicePopup"></new-invoice-popup>
+      <upload-invoice-popup></upload-invoice-popup>
+    </div>
+  </ng-sidebar-container>
+</div>

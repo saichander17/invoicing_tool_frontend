@@ -1,0 +1,45 @@
+.invoice-summary-container{
+  background: #fff;
+  padding: 15px;
+  .invoice-customer-details{
+    .invoice-details{
+      display: inline-block;
+      .invoice-details-heading{
+        margin: 0;
+      }
+      .invoice-details-id{
+        margin: 0;
+        font-weight: lighter;
+      }
+      .invoice-details-date{
+        margin: 0;
+        font-weight: lighter;
+        font-size: 14px;
+      }
+    }
+    .download-btn{
+      float: right;
+      margin: 15px;
+    }
+    .customer-details{
+      float: right;
+      p{
+        margin: 0;
+      }
+    }
+  }
+  .invoice-product-pricing-details{
+    .total-pricing-container{
+      float: right;
+      .table{
+        tbody{
+          tr{
+            td{
+              padding: 0.1rem 0.75rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,78 @@
+<popup>
+  <div class="new-invoice-container">
+    <form class="customer-details-form" *ngIf="activeForm=='customer_details'">
+      <div class="form-group">
+        <label for="name">Full Name</label>
+        <input type="text" class="form-control" id="name" required>
+      </div>
+ 
+      <div class="form-group">
+        <label for="phone">Phone no.</label>
+        <input type="text" class="form-control" id="phone" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email ID</label>
+        <input type="email" class="form-control" id="email" required>
+      </div>
+
+      <div class="form-group">
+        <label for="address">Address</label>
+        <input type="textarea" class="form-control" id="address" required>
+      </div>
+ 
+      <button type="submit" class="btn btn-success">Next</button>
+ 
+    </form>
+    <form class="product-pricing-form" *ngIf="activeForm=='product_pricing'">
+      <div class="table-responsive-md">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Item</th>
+              <th scope="col" class="text-center">Quantity</th>
+              <th scope="col" class="text-right">Price ({{invoice.currency}})</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let product of invoice['products']; let idx = index">
+              <td>
+                <input type="text" name="name--{{idx}}" [(ngModel)]="invoice['products'][idx]['name']">
+              </td>
+              <td class="text-center">
+                <input type="number" name="quantity--{{idx}}" [(ngModel)]="invoice['products'][idx]['quantity']">
+              </td>
+              <td class="text-right">
+                <input type="number" name="totalAmount--{{idx}}" [(ngModel)]="invoice['products'][idx]['totalAmount']">
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <button (click)="addNewProduct()">Add Product</button>
+        <div class="tax-discount-subtotal-container">
+          <div class="form-group">
+            <label for="taxPercent">Tax %</label>
+            <input type="number" name="taxPercent" placeholder="tax %" [(ngModel)]="invoice['taxPercent']">
+            <span>{{calculateInvoiceTotals()['tax']}}</span>
+          </div>
+          <div class="form-group">
+            <label for="discountPercent">Discount %</label>
+            <input type="number" name="discountPercent" placeholder="discount %" [(ngModel)]="invoice['discountPercent']">
+            <span>{{calculateInvoiceTotals()['discount']}}</span>
+          </div>
+          <div class="form-group">
+            <label for="subtotal">Subtotal</label>
+            <input type="number" name="subtotal" placeholder="Subotal" [ngModel]="calculateInvoiceTotals()['subtotal']" disabled="">
+          </div>
+          <div class="form-group">
+            <label for="totalAmount">Grand Total</label>
+            <input type="number" name="totalAmount" placeholder="totalAmount" [ngModel]="calculateInvoiceTotals()['totalAmount']" disabled="">
+          </div>
+        </div>
+      </div>
+ 
+      <button type="submit" class="btn btn-success">Submit</button>
+ 
+    </form>
+  </div>
+</popup>
