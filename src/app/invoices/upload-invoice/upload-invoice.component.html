@@ -1,6 +1,6 @@
 <popup>
   <div class="upload-invoice-container">
-    <form class="invoice-upload-form" (ngSubmit)="nextStep()" *ngIf="viewSection=='file_upload'">
+    <form class="invoice-upload-form" (ngSubmit)="changeStep('dataTable')" *ngIf="viewSection=='file_upload'">
       <div class="form-group">
         <label for="file">Upload Invoice in csv/xls/xlsx format</label>
         <input type="file" class="form-control" id="file" (change)="onFileChange($event)" #fileInput>
@@ -8,7 +8,7 @@
       <button type="submit" class="btn btn-success">Next</button>
     </form>
     <div class="table-responsive-lg" *ngIf="viewSection=='dataTable'">
-      <button class="btn btn-primary" (ngSubmit)="upload()">Submit</button>
+      <button class="btn btn-primary" (click)="upload()">Submit</button>
       <table class="table table-bordered">
         <tbody>
           <tr *ngFor="let row of fileData">
@@ -18,6 +18,12 @@
           </tr>
         </tbody>
       </table>
+    </div>
+    <div *ngIf="viewSection=='polling_screen'">
+      <p>This is the loading screen. It doesn't take this long in actual. I just added extra 10 seconds delay in the backend. A polling API is being called from this screen every 2 seconds to get the status and percentage</p>
+      <p>File Status: {{fileStatus['status']}}</p>
+      <p>Percentage Processed: {{fileStatus['percentProcessed']}}</p>
+      <button (click)="removePopUp()">OK</button>
     </div>
   </div>
 </popup>

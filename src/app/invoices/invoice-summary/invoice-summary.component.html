@@ -1,14 +1,14 @@
-<div class="invoice-summary-container">
+<div class="invoice-summary-container" *ngIf="invoice">
   <div class="invoice-customer-details">
     <div class="invoice-details">
       <p class="invoice-details-heading">INVOICE</p>
       <p  class="invoice-details-id">Invoice Id: {{invoice.id}}</p>
-      <p class="invoice-details-date">{{invoice.date}}</p>
+      <p class="invoice-details-date">{{invoice.created_at}}</p>
     </div>
     <button class="btn btn-primary download-btn">Download</button>
     <div class="customer-details">
       <p>Customer Details</p>
-      <p>{{invoice.userName}}</p>
+      <p>{{invoice.customer_info['name']}}</p>
     </div>
   </div>
   <div class="invoice-product-pricing-details">
@@ -22,10 +22,10 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let product of invoice['products']">
+          <tr *ngFor="let product of invoice['product_info']">
             <td>{{product.name}}</td>
             <td class="text-center">{{product.quantity}}</td>
-            <td class="text-right">{{product.totalAmount}}</td>
+            <td class="text-right">{{product.amount}}</td>
           </tr>
         </tbody>
       </table>
@@ -35,19 +35,19 @@
         <tbody>
           <tr>
             <td>Subtotal</td>
-            <td>{{invoice.currency}} {{invoice.subtotal}}</td>
+            <td>{{invoice.currency}} {{invoice.pricing['subtotal']}}</td>
           </tr>
           <tr>
-            <td>Tax ({{invoice.taxPercent}})%</td>
-            <td>{{invoice.currency}} {{invoice.tax}}</td>
+            <td>Tax ({{invoice.pricing['tax_percent']}})%</td>
+            <td>{{invoice.currency}} {{invoice.pricing['tax']}}</td>
           </tr>
-          <tr *ngIf="invoice.discountPercent>0">
-            <td>Discount ({{invoice.discountPercent}})%</td>
-            <td>{{invoice.currency}} {{invoice.discount}}</td>
+          <tr *ngIf="invoice.pricing['discount_percent']>0">
+            <td>Discount ({{invoice.pricing['discount_percent']}})%</td>
+            <td>{{invoice.currency}} {{invoice.pricing['discount']}}</td>
           </tr>
           <tr>
             <td>Grand Total</td>
-            <td>{{invoice.currency}} {{invoice.totalAmount}}</td>
+            <td>{{invoice.currency}} {{invoice.pricing['total_amount']}}</td>
           </tr>
         </tbody>
       </table>

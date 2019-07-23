@@ -42,13 +42,19 @@ export class InvoiceService{
       .pipe(map(this.extractData),catchError(this.handleError))
   }
 
+  checkFileStatus(id: number): Observable<any>{
+    let url =  this.apiUrl +  this.baseUrl + "/uploaded-files/"+ id;
+    return this.http.get(url)
+      .pipe(map(this.extractData),catchError(this.handleError))
+  }
+
   private extractData(response: Response){
     let jsonResponse = response.json();
     return jsonResponse;  
   }
 
   private handleError (error: any) {
-    debugger
+    // debugger
       let errMsg = (error.message) ? error.message :
         error.status ? `${error.status} - ${error.statusText}` : 'Server error';
       console.error(errMsg);

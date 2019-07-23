@@ -5,7 +5,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { InvoicesModule } from './invoices/invoices.module';
-
+import { HttpModule } from '@angular/http';
 @NgModule({
   declarations: [
     AppComponent
@@ -14,7 +14,8 @@ import { InvoicesModule } from './invoices/invoices.module';
     BrowserModule,
     NgbModule,
     AppRoutingModule,
-    InvoicesModule
+    InvoicesModule,
+    HttpModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -12,7 +12,7 @@ import { InvoiceSummaryComponent } from './invoice-summary/invoice-summary.compo
 import { PopupComponent } from '../popup/popup.component';
 import { NewInvoiceComponent } from './new-invoice/new-invoice.component';
 import { UploadInvoiceComponent } from './upload-invoice/upload-invoice.component';
-
+import { InvoiceService } from './invoices.service';
 
 
 @NgModule({

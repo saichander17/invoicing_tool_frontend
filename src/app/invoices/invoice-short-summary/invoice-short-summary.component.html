@@ -1,7 +1,8 @@
 <div class="short-summary-container">
-  <p class="invoice-datetime">{{invoice.time}} - {{invoice.date}}</p>
+  <p class="invoice-datetime">{{invoice.created_at}}</p>
   <p>INV. # - {{invoice.id}}</p>
-  <p>Items - {{invoice.numberOfItems}}</p>
-  <p>{{invoice.userName}}</p>
-  <p class="invoice-total-amount">{{invoice.currency}} {{invoice.totalAmount}}</p>
+  <p>Items - {{invoice.product_info.length}}</p>
+  <p>{{invoice.customer_info['name']}}</p>
+  <!-- <p class="invoice-total-amount">{{invoice.currency}} {{invoice.totalAmount}}</p> -->
+  <p class="invoice-total-amount">Rs. {{invoice.pricing['total_amount']}}</p>
 </div>

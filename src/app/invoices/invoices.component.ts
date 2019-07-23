@@ -10,6 +10,7 @@ export class InvoicesComponent {
   constructor(private route: ActivatedRoute) {}
   private invoicesListSideBarOptions:Object = {open: true, mode: 'push'};
   private activeInvoiceId:number;
+  private showUploadInvoicePopup:boolean = false;
   private showNewInvoicePopup:boolean = false;
   ngOnInit(){
     this.adjustInvoiceListSideBar();
@@ -29,5 +30,14 @@ export class InvoicesComponent {
   }
   openNewInvoicePopup(){
     this.showNewInvoicePopup = true;
+  }
+  showHideNewInvoicePopup(event){
+    this.showNewInvoicePopup = false;
+  }
+  openUploadInvoicePopup(){
+    this.showUploadInvoicePopup = true;
+  }
+  showHideUploadInvoicePopup($event){
+    this.showUploadInvoicePopup = false;
   }
 }

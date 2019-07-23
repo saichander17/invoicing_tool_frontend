@@ -7,11 +7,11 @@
       <!-- <button (click)="toggleInvoicesList()">Toggle sidebar</button> -->
       <!-- <p>hello asdjkhak jsdhkashdjk ashdjkashdkjash djkashdjkashdj kashdjakshdjkash djkashdjk fhjashdkshk</p> -->
       <button (click)="openNewInvoicePopup()">Create New Invoice</button>
-      <button>Upload Invoice(s) file</button>
+      <button (click)="openUploadInvoicePopup()">Upload Invoice(s) file</button>
       <invoice-summary [(invoiceId)]='activeInvoiceId' *ngIf="activeInvoiceId"></invoice-summary>
       <!-- <popup>Hello!</popup> -->
-      <new-invoice-popup *ngIf="showNewInvoicePopup"></new-invoice-popup>
-      <upload-invoice-popup></upload-invoice-popup>
+      <new-invoice-popup (hidePopUp)="showHideNewInvoicePopup($event)" *ngIf="showNewInvoicePopup"></new-invoice-popup>
+      <upload-invoice-popup (hidePopUp)="showHideUploadInvoicePopup($event)" *ngIf="showUploadInvoicePopup"></upload-invoice-popup>
     </div>
   </ng-sidebar-container>
 </div>
