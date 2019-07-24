@@ -22,7 +22,7 @@ export class InvoiceSummaryComponent {
   }
   // @Input() invoiceId:number;
   // @Output() invoiceIdChange: EventEmitter<number> = new EventEmitter();
-  private invoice:Invoice;
+  public invoice:Invoice;
   constructor(private invoiceService:InvoiceService, private router: Router){}
   ngOnInit(){
     this.setInvoice(this.invoiceId);

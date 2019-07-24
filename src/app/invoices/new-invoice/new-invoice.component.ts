@@ -9,7 +9,7 @@ import { InvoiceService } from '../invoices.service';
 })
 export class NewInvoiceComponent {
   @Output() hidePopUp: EventEmitter<any> = new EventEmitter();
-  private activeForm:string = 'customer_details';
+  public activeForm:string = 'customer_details';
   private invoice:Invoice = new Invoice().deserialize({
     customer_info: {"name": null},
     product_info: [{}],

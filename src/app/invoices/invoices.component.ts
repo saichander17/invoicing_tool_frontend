@@ -8,10 +8,10 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class InvoicesComponent {
   constructor(private route: ActivatedRoute) {}
-  private invoicesListSideBarOptions:Object = {open: true, mode: 'push'};
-  private activeInvoiceId:number;
-  private showUploadInvoicePopup:boolean = false;
-  private showNewInvoicePopup:boolean = false;
+  public invoicesListSideBarOptions:Object = {open: true, mode: 'push'};
+  public activeInvoiceId:number;
+  public showUploadInvoicePopup:boolean = false;
+  public showNewInvoicePopup:boolean = false;
   ngOnInit(){
     this.adjustInvoiceListSideBar();
     this.route.params.subscribe(params => {

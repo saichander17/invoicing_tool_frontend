@@ -2,6 +2,7 @@ import {Deserializable} from "./deserializable.model";
 export class Invoice implements Deserializable{
   // Each of customer_info, product info, pricing would ideally have separate classes
   // But here, we are just dealing with the invoices. So, not creating those classes
+  id: number;
   customer_info: Object;
   product_info: Array<Object>;
   pricing: Object;

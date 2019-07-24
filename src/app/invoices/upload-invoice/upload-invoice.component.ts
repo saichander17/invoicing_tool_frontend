@@ -11,7 +11,7 @@ export class UploadInvoiceComponent {
   private fileId:number;
   private fileData:Array<string>;
   private fileStatus:Object = {};
-  private viewSection:string = 'file_upload';
+  public viewSection:string = 'file_upload';
   private polling_interval_session:any;
   constructor(private invoiceService:InvoiceService){}
   // nextStep(){

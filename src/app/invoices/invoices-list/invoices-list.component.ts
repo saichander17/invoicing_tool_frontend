@@ -9,7 +9,7 @@ import { Invoice } from '../../models/invoice.model';
   // providers: [InvoiceService],
 })
 export class InvoicesListComponent {
-  private invoices:Array<Invoice>;
+  public invoices:Array<Invoice>;
   private invoicesListOpened:boolean = true;
   constructor(private invoiceService:InvoiceService) {
     this.getInvoices();
