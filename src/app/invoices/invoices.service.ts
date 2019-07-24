@@ -8,7 +8,7 @@ import { Invoice } from '../models/invoice.model';
   providedIn: 'root'
 })
 export class InvoiceService{
-  private apiUrl = "http://localhost:8000/"
+  private apiUrl = "https://invoicingtoolbackendapp.herokuapp.com/"
   private baseUrl =   "invoicingtool/invoices";
   constructor (private http:Http){}
   getInvoices(): Observable<any>{
