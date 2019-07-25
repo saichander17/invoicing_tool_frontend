@@ -1,4 +1,5 @@
 <popup>
+  <button class="btn btn-default close-popup-btn" (click)="removePopUp()">X</button>
   <div class="new-invoice-container">
     <form class="customer-details-form" *ngIf="activeForm=='customer_details'" (ngSubmit)="changeStep('product_pricing')" ngNativeValidate>
       <div class="form-group">

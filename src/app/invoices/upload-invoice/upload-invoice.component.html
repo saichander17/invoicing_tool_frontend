@@ -1,4 +1,5 @@
 <popup>
+  <button class="btn btn-default close-popup-btn" (click)="removePopUp()">X</button>
   <div class="upload-invoice-container">
     <form class="invoice-upload-form" (ngSubmit)="changeStep('dataTable')" *ngIf="viewSection=='file_upload'">
       <div class="form-group">
