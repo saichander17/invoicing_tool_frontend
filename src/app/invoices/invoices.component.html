@@ -1,11 +1,13 @@
 <div class="invoices-container">
   <ng-sidebar-container>
     <ng-sidebar #invoiceListSideBar [(opened)]="invoicesListSideBarOptions['open']" [mode]="invoicesListSideBarOptions['mode']">
+      <button class="btn btn-primary" (click)="toggleInvoicesList()">Close Invoice List</button>
       <invoices-list></invoices-list>
     </ng-sidebar>
     <div ng-sidebar-content>
       <!-- <button (click)="toggleInvoicesList()">Toggle sidebar</button> -->
       <!-- <p>hello asdjkhak jsdhkashdjk ashdjkashdkjash djkashdjkashdj kashdjakshdjkash djkashdjk fhjashdkshk</p> -->
+      <button class="btn btn-primary" (click)="toggleInvoicesList()" *ngIf="!invoicesListSideBarOptions['open']">Open Invoice List</button>
       <button class="btn btn-primary" (click)="openNewInvoicePopup()">Create New Invoice</button>
       <button class="btn btn-primary" (click)="openUploadInvoicePopup()">Upload Invoice(s) file</button>
       <invoice-summary [(invoiceId)]='activeInvoiceId' *ngIf="activeInvoiceId"></invoice-summary>

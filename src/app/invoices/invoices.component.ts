@@ -13,21 +13,24 @@ export class InvoicesComponent {
   public showUploadInvoicePopup:boolean = false;
   public showNewInvoicePopup:boolean = false;
   ngOnInit(){
-    this.adjustInvoiceListSideBar();
+    // this.adjustInvoiceListSideBar();
     this.route.params.subscribe(params => {
        this.activeInvoiceId = params['invoiceId'];
+       if(window.innerWidth<780){
+         this.invoicesListSideBarOptions['open'] = false
+       }
     });
   }
   toggleInvoicesList(){
     this.invoicesListSideBarOptions['open'] = !this.invoicesListSideBarOptions['open'];
   }
-  adjustInvoiceListSideBar(){
-    if(window.innerWidth<780){
-      // mode should be changed to over and triggerRerender should be executed
-      // this.invoicesListSideBarOptions['mode'] = 'slide';
-      // this.invoiceListSideBar.triggerRerender();
-    }
-  }
+  // adjustInvoiceListSideBar(){
+  //   if(window.innerWidth<780){
+  //     // mode should be changed to over and triggerRerender should be executed
+  //     // this.invoicesListSideBarOptions['mode'] = 'slide';
+  //     // this.invoiceListSideBar.triggerRerender();
+  //   }
+  // }
   openNewInvoicePopup(){
     this.showNewInvoicePopup = true;
   }
