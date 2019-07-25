@@ -1,6 +1,7 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import { Invoice } from '../../models/invoice.model';
 import { InvoiceService } from '../invoices.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'new-invoice-popup',
@@ -15,7 +16,7 @@ export class NewInvoiceComponent {
     product_info: [{}],
     pricing: {subtotal: 0, tax_percent: 0, discount_percent: 0, tax: 0, discount: 0, total_amount: 0},
   });
-  constructor(private invoiceService:InvoiceService){}
+  constructor(private invoiceService:InvoiceService, private router: Router){}
   private addNewProduct(){
     this.invoice.product_info.push({});
   }
@@ -36,9 +37,16 @@ export class NewInvoiceComponent {
   private createInvoice(){
     let self = this;
     this.invoiceService.createInvoice(this.invoice).subscribe(function(response){
-      alert("Invoice created successfully");
-      self.activeForm = 'customer_details';
-      self.removePopUp();
+      if(response.success){
+        alert("Invoice created successfully");
+        self.activeForm = 'customer_details';
+        self.removePopUp();
+        self.router.navigate(['/invoices/'+response['invoice']['id']]);
+      }else{
+        alert("Invoice couldn't be created. Please check the form once again");
+        self.activeForm = 'customer_details';
+        self.removePopUp();
+      }
     },
     function(error){
       console.log(error);
