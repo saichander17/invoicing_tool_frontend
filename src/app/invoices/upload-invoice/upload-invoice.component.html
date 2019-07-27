@@ -3,13 +3,20 @@
   <div class="upload-invoice-container">
     <form class="invoice-upload-form" (ngSubmit)="changeStep('dataTable')" *ngIf="viewSection=='file_upload'">
       <div class="form-group">
-        <label for="file">Upload Invoice in csv/xls/xlsx format</label>
-        <input type="file" class="form-control" id="file" (change)="onFileChange($event)" #fileInput>
+        <label class="upload-label" for="file">
+          <!-- <fa-icon [icon]="faCloudUpload"></fa-icon> -->
+          <img src="https://assets.embibe.com/staging/assets_new/images/institute/deo/uploadLogo.svg">
+          <h3>Upload Invoice File</h3>
+          <p>Browse</p>
+          <span>Supported file format is CSV</span>
+        </label>
+        <input type="file" class="form-control" id="file" (change)="onFileChange($event)" #fileInput hidden>
       </div>
-      <button type="submit" class="btn btn-success">Next</button>
+      <!-- <button type="submit" class="btn btn-success">Next</button> -->
     </form>
     <div class="table-responsive-lg" *ngIf="viewSection=='dataTable'">
-      <button class="btn btn-primary" (click)="upload()">Submit</button>
+      <button class="btn btn-default btn-default-invoice" (click)="changeStep('file_upload')"> < Upload Again</button>
+      <button class="btn btn-default btn-default-invoice" style="float: right;" (click)="upload()">Submit ></button>
       <table class="table table-bordered">
         <tbody>
           <tr *ngFor="let row of fileData">

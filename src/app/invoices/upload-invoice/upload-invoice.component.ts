@@ -1,11 +1,13 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import { InvoiceService } from '../invoices.service';
+// import { faCloudUpload } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'upload-invoice-popup',
   templateUrl: './upload-invoice.component.html',
   styleUrls: ['./upload-invoice.component.scss']
 })
 export class UploadInvoiceComponent {
+  // faCloudUpload = faCloudUpload;
   @Output() hidePopUp: EventEmitter<any> = new EventEmitter();
   private file:any;
   private fileId:number;
@@ -64,15 +66,18 @@ export class UploadInvoiceComponent {
       if (!regex.test(event.target.value.toLowerCase())) {
         alert("Please upload file which is one of csv/xlsx/xls");
         self.clearFile(event);
+        return;
       }
       self.file = event.target.files[0];
       if(self.file['size']>52428800){
         alert("Please upload file which is less than 50MB");
         self.clearFile(event);
+        return;
       }
       reader.readAsText(self.file);
       reader.onload = () => {
         self.fileData = reader.result.toString().split("\n");
+        self.changeStep('dataTable');
         // this.viewSection='dataTable';
       };
     }
