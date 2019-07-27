@@ -7,5 +7,14 @@ import { Invoice } from '../../models/invoice.model';
 })
 export class InvoiceShortSummaryComponent {
   @Input('invoice') invoice:Invoice;
+  isSelectedInvoiceValue:boolean;
+  @Input()
+  get isSelectedInvoice() {
+    return this.isSelectedInvoiceValue;
+  }
+  set isSelectedInvoice(val) {
+    this.isSelectedInvoiceValue = val;
+  }
+
   constructor() {}
 }

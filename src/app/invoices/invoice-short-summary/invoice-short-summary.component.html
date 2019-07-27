@@ -1,8 +1,8 @@
-<div class="short-summary-container">
+<div class="short-summary-container" [ngClass] = "isSelectedInvoice ? 'short-summary-container--selected' : ''">
   <p class="invoice-datetime">{{invoice.created_at}}</p>
   <p>INV. # - {{invoice.id}}</p>
-  <p>Items - {{invoice.product_info.length}}</p>
-  <p>{{invoice.customer_info['name']}}</p>
+  <p style="margin-bottom: 0.3rem">Items - {{invoice.product_info.length}}</p>
+  <p style="color: #5f94df">{{invoice.customer_info['name']}}</p>
   <!-- <p class="invoice-total-amount">{{invoice.currency}} {{invoice.totalAmount}}</p> -->
   <p class="invoice-total-amount">Rs. {{invoice.pricing['total_amount']}}</p>
 </div>
