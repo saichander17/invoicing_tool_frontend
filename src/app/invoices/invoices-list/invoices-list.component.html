@@ -1,5 +1,10 @@
 <div class="invoices-list-container">
-  <a [routerLink]="'/invoices/'+invoice.id" *ngFor="let invoice of invoices">
-    <invoice-short-summary [(invoice)]='invoice'></invoice-short-summary>
-  </a>
+  <div class="header">
+    <p>Admin Panel</p>
+  </div>
+  <div class="invoices-list-content">
+    <a [routerLink]="'/invoices/'+invoice.id" *ngFor="let invoice of invoices">
+      <invoice-short-summary [(invoice)]='invoice' [(isSelectedInvoice)]='invoice.id==selectedInvoiceId'></invoice-short-summary>
+    </a>
+  </div>
 </div>

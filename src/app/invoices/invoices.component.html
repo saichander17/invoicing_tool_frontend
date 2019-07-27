@@ -1,16 +1,20 @@
 <div class="invoices-container">
   <ng-sidebar-container>
-    <ng-sidebar #invoiceListSideBar [(opened)]="invoicesListSideBarOptions['open']" [mode]="invoicesListSideBarOptions['mode']">
-      <button class="btn btn-primary" (click)="toggleInvoicesList()">Close Invoice List</button>
-      <invoices-list></invoices-list>
+    <ng-sidebar #invoiceListSideBar [(opened)]="invoicesListSideBarOptions['open']" [mode]="invoicesListSideBarOptions['mode']" [sidebarClass]="'invoices-list-sidebar'">
+      <button class="btn btn-primary" (click)="toggleInvoicesList()" *ngIf="smallScreen">Close Invoice List</button>
+      <invoices-list [(selectedInvoiceId)]="activeInvoiceId"></invoices-list>
     </ng-sidebar>
     <div ng-sidebar-content>
       <!-- <button (click)="toggleInvoicesList()">Toggle sidebar</button> -->
       <!-- <p>hello asdjkhak jsdhkashdjk ashdjkashdkjash djkashdjkashdj kashdjakshdjkash djkashdjk fhjashdkshk</p> -->
-      <button class="btn btn-primary" (click)="toggleInvoicesList()" *ngIf="!invoicesListSideBarOptions['open']">Open Invoice List</button>
-      <button class="btn btn-primary" (click)="openNewInvoicePopup()">Create New Invoice</button>
-      <button class="btn btn-primary" (click)="openUploadInvoicePopup()">Upload Invoice(s) file</button>
-      <invoice-summary [(invoiceId)]='activeInvoiceId' *ngIf="activeInvoiceId"></invoice-summary>
+      <div class="header">
+        <button class="btn invoices-list-toggle-btn" (click)="toggleInvoicesList()">☰</button>
+      </div>
+      <button class="btn btn-default btn-default-invoice" (click)="openNewInvoicePopup()"><fa-icon [icon]="faPlus"></fa-icon></button>
+      <button class="btn btn-default btn-default-invoice" (click)="openUploadInvoicePopup()"><fa-icon [icon]="faUpload"></fa-icon></button>
+      <div class="invoice-summary-div">
+        <invoice-summary [(invoiceId)]='activeInvoiceId' *ngIf="activeInvoiceId"></invoice-summary>
+      </div>
       <!-- <popup>Hello!</popup> -->
       <new-invoice-popup (hidePopUp)="showHideNewInvoicePopup($event)" *ngIf="showNewInvoicePopup"></new-invoice-popup>
       <upload-invoice-popup (hidePopUp)="showHideUploadInvoicePopup($event)" *ngIf="showUploadInvoicePopup"></upload-invoice-popup>

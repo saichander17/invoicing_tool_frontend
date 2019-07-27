@@ -2,13 +2,14 @@ import { Component, Output, EventEmitter } from '@angular/core';
 import { Invoice } from '../../models/invoice.model';
 import { InvoiceService } from '../invoices.service';
 import { Router } from '@angular/router';
-
+import { faEdit } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'new-invoice-popup',
   templateUrl: './new-invoice.component.html',
   styleUrls: ['./new-invoice.component.scss']
 })
 export class NewInvoiceComponent {
+  faEdit = faEdit;
   @Output() hidePopUp: EventEmitter<any> = new EventEmitter();
   public activeForm:string = 'customer_details';
   private invoice:Invoice = new Invoice().deserialize({
@@ -19,6 +20,9 @@ export class NewInvoiceComponent {
   constructor(private invoiceService:InvoiceService, private router: Router){}
   private addNewProduct(){
     this.invoice.product_info.push({});
+  }
+  public removeLastProduct(){
+    this.invoice.product_info.pop();
   }
   private calculateInvoiceTotals(){
     this.invoice.pricing['subtotal'] = 0;

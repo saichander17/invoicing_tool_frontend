@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { InvoiceService } from '../invoices.service';
 import { Invoice } from '../../models/invoice.model';
 
@@ -9,6 +9,20 @@ import { Invoice } from '../../models/invoice.model';
   // providers: [InvoiceService],
 })
 export class InvoicesListComponent {
+  // @Input('selectedInvoiceId') selectedInvoiceId:number;
+  selectedInvoiceIdValue:number;
+
+  @Output() selectedInvoiceIdChange: EventEmitter<number> = new EventEmitter();
+  @Input()
+  get selectedInvoiceId() {
+    return this.selectedInvoiceIdValue;
+  }
+  set selectedInvoiceId(val) {
+    this.selectedInvoiceIdValue = val;
+    this.selectedInvoiceIdChange.emit(this.selectedInvoiceIdValue);
+    // this.setInvoice(this.selectedInvoiceIdValue);
+  }
+
   public invoices:Array<Invoice>;
   private invoicesListOpened:boolean = true;
   constructor(private invoiceService:InvoiceService) {

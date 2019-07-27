@@ -1,4 +1,19 @@
 .invoices-list-container{
   width: 300px;
   // height: 100vh;
+  .header{
+    background-color: #326399;
+    height: 60px;
+    position: fixed;
+    width: inherit;
+    z-index: 5;
+    p{
+      line-height: 60px;
+      color: #fff;
+      text-align: center;
+    }
+  }
+  .invoices-list-content{
+    padding-top: 60px;
+  }
 }

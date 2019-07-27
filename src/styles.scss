@@ -1,5 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~bootstrap/dist/css/bootstrap.min.css';
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 .text-right{
   text-align: right;
+}
+.invoices-list-sidebar{
+  background-color: #2E3640;
+}
+.btn-default-invoice{
+  background-color: #326399;
+  color: #fff;
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-
+import { faPlus, faUpload } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'invoices',
   templateUrl: './invoices.component.html',
@@ -12,12 +12,16 @@ export class InvoicesComponent {
   public activeInvoiceId:number;
   public showUploadInvoicePopup:boolean = false;
   public showNewInvoicePopup:boolean = false;
+  public smallScreen:boolean = false;
+  faPlus = faPlus;
+  faUpload = faUpload;
   ngOnInit(){
     // this.adjustInvoiceListSideBar();
     this.route.params.subscribe(params => {
        this.activeInvoiceId = params['invoiceId'];
        if(window.innerWidth<780){
-         this.invoicesListSideBarOptions['open'] = false
+         this.invoicesListSideBarOptions['open'] = false;
+         this.smallScreen = true;
        }
     });
   }

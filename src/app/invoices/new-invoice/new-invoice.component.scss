@@ -1,5 +1,51 @@
 .new-invoice-container{
   padding: 20px;
+  font-family: Roboto;
+  .popup-header{
+    margin-bottom: 20px;
+    // font-family: Roboto;
+  }
+  .popup-content-heading{
+    border-bottom: 1px solid;
+    padding-bottom: .5rem;
+    text-transform: uppercase;
+    font-weight: lighter;
+    // font-family: Roboto;
+  }
+  .edit-customer-details-btn{
+    float: right;
+    margin-top: -40px;
+    margin-right: 40px;
+    cursor: pointer;
+    font-size: 30px;
+    color: #326399;
+  }
+  .customer-details-short{
+    float: right;
+    margin-right: 20px;
+    margin-top: -40px;
+    .heading{
+      font-size: 12px;
+      margin: 0;
+    }
+    .name{
+      font-size: 18px;
+      margin: 0;
+    }
+    .email{
+      font-size: 12px;
+      margin: 0;
+    }
+  }
+  .customer-details-form{
+    .required-asterick{
+      color: red;
+      font-size: 10px;
+    }
+    label{
+      font-size: 14px;
+    }
+  }
   .product-pricing-form{
     .tax-discount-subtotal-container{
       label{
