@@ -12,8 +12,14 @@
       </div>
       <button class="btn btn-default btn-default-invoice" (click)="openNewInvoicePopup()"><fa-icon [icon]="faPlus"></fa-icon></button>
       <button class="btn btn-default btn-default-invoice" (click)="openUploadInvoicePopup()"><fa-icon [icon]="faUpload"></fa-icon></button>
-      <div class="invoice-summary-div">
-        <invoice-summary [(invoiceId)]='activeInvoiceId' *ngIf="activeInvoiceId"></invoice-summary>
+      <div class="invoice-summary-div" *ngIf="activeInvoiceId">
+        <invoice-summary [(invoiceId)]='activeInvoiceId'></invoice-summary>
+      </div>
+      <div class="admin-home-container" *ngIf="!activeInvoiceId">
+        <h1>Welcome to Invoicing Tool</h1>
+        <p>Invoicing tool lets you view, add or upload invoices. Please feel free to check around</p>
+        <p>You can watch the exaplainer video below to understand how the panel works</p>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/FVFv5io-41U?start=7" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
       <!-- <popup>Hello!</popup> -->
       <new-invoice-popup (hidePopUp)="showHideNewInvoicePopup($event)" *ngIf="showNewInvoicePopup"></new-invoice-popup>
