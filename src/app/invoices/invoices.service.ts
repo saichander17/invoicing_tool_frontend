@@ -12,8 +12,8 @@ import JSEncrypt from 'jsencrypt';
   providedIn: 'root'
 })
 export class InvoiceService{
-  // private apiUrl = "https://invoicingtoolbackendapp.herokuapp.com/"
-  private apiUrl = "http://localhost:8000/"
+  private apiUrl = "https://invoicingtoolbackendapp.herokuapp.com/"
+  // private apiUrl = "http://localhost:8000/"
   private baseUrl = "invoicingtool/invoices";
   private secret_key;
   // private secret_key = "9864079b7f0eb89612e9d4e8e8539a1b";
