@@ -8,15 +8,16 @@
           <img src="https://assets.embibe.com/staging/assets_new/images/institute/deo/uploadLogo.svg">
           <h3>Upload Invoice File</h3>
           <p>Browse</p>
-          <span>Supported file format is CSV</span>
+          <span>Supported file formats are csv/xlsx/xls</span><br>
+          <span>Please note that only csv files have preview support</span>
         </label>
         <input type="file" class="form-control" id="file" (change)="onFileChange($event)" #fileInput hidden>
       </div>
       <!-- <button type="submit" class="btn btn-success">Next</button> -->
     </form>
     <div class="table-responsive-lg" *ngIf="viewSection=='dataTable'">
-      <button class="btn btn-default btn-default-invoice" (click)="changeStep('file_upload')"> < Upload Again</button>
-      <button class="btn btn-default btn-default-invoice" style="float: right;" (click)="upload()">Submit ></button>
+      <button class="btn btn-default btn-default-invoice" (click)="changeStep('file_upload')" style="margin-bottom: 20px"> < Upload Again</button>
+      <button class="btn btn-default btn-default-invoice" style="float: right;margin-bottom: 20px" (click)="upload()">Submit ></button>
       <table class="table table-bordered">
         <tbody>
           <tr *ngFor="let row of fileData">

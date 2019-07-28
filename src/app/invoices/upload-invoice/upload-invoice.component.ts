@@ -76,7 +76,10 @@ export class UploadInvoiceComponent {
       }
       reader.readAsText(self.file);
       reader.onload = () => {
-        self.fileData = reader.result.toString().split("\n");
+        let regex = /^([a-zA-Z0-9\s_\\.\-:\(\)])+(.csv)$/;
+        if (regex.test(event.target.value.toLowerCase())) {
+          self.fileData = reader.result.toString().split("\n");
+        }
         self.changeStep('dataTable');
         // this.viewSection='dataTable';
       };
